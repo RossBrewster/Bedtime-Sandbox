@@ -46,7 +46,7 @@ app.get('/api/test', async (req, res) => {
       {
         role: 'user',
         content:
-          'Hello, I am a human. Please tell me your name and why you are here.',
+          'Please write a short story about a robot trying to understand humanity.',
       },
     ],
     model: 'gpt-4-1106-preview',

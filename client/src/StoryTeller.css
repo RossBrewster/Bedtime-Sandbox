@@ -1,0 +1,27 @@
+.dark-sand {
+  background-color: #efe0ca;
+  color: #fff;
+}
+
+.story-container {
+  width: 40rem;
+  height: 40rem;
+  border-radius: 2rem;
+  align-items: center;
+  justify-content: center;
+  overflow-y: scroll;
+  padding: 1rem;
+}
+
+.story {
+  color: black;
+  overflow: auto;
+  padding: 10px;
+  width: auto;
+  height: auto;
+  line-height: 1.5;
+  text-align: left;
+  white-space: pre-line;
+}
+
+/* 6FD8ED */
