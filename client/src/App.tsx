@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.css';
 
 export default function App() {
@@ -8,28 +6,17 @@ export default function App() {
 
   useEffect(() => {
     async function readServerData() {
-      const resp = await fetch('/api/hello');
+      setServerData('Loading...');
+      const resp = await fetch('/api/test');
       const data = await resp.json();
 
       console.log('Data from server:', data);
 
-      setServerData(data.message);
+      setServerData(data);
     }
 
     readServerData();
   }, []);
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>{serverData}</h1>
-    </>
-  );
+  return <h1>{serverData}</h1>;
 }
