@@ -2,6 +2,8 @@
 import 'dotenv/config';
 import express from 'express';
 import pg from 'pg';
+import OpenAI from 'openai';
+import dotenv from 'dotenv';
 import {
   ClientError,
   defaultMiddleware,
@@ -18,6 +20,10 @@ const db = new pg.Pool({
   },
 });
 
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
 const app = express();
 
 // Create paths for static directories
@@ -31,6 +37,21 @@ app.use(express.json());
 
 app.get('/api/hello', (req, res) => {
   res.json({ message: 'Hello, World!' });
+});
+
+// hello world from open ai
+app.get('/api/test', async (req, res) => {
+  const gptResponse = await openai.chat.completions.create({
+    messages: [
+      {
+        role: 'user',
+        content:
+          'Hello, I am a human. Please tell me your name and why you are here.',
+      },
+    ],
+    model: 'gpt-4-1106-preview',
+  });
+  res.json(gptResponse.choices[0].message.content);
 });
 
 /*
